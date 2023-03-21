@@ -1,0 +1,17 @@
+{
+  "sucesso": {
+    "name": "Victor",
+    "email": "vy.santos@live.com",
+    "password": "pwd123"
+  },
+  "senhaInvalida": {
+    "name": "Victor",
+    "email": "vy.santos@teste.com",
+    "password": "pwd123"
+  },
+  "email404": {
+    "name": "Victor",
+    "email": "vy.santos@teste.com",
+    "password": "pwd123"
+  }
+}
