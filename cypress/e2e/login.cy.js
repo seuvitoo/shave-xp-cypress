@@ -7,15 +7,18 @@ import data from "../fixtures/users.json";
 
 describe("login", () => {
   context.only("quando submeto o formulário", () => {
-    it("deve logar com sucesso", () => {
+    it.only("deve logar com sucesso", () => {
       const user = data.sucesso;
+
+      cy.createUser(user)
+      
+
       loginPage.submit(user.email, user.password);
       shaversPage.header.userShouldBeLogged(user.name);
     });
 
     it("não deve logar com senha incorreta", () => {
-
-      const senhaInvalida = data.senhaInvalida
+      const senhaInvalida = data.senhaInvalida;
       const message =
         "Ocorreu um erro ao fazer login, verifique suas credenciais.";
 
@@ -24,8 +27,7 @@ describe("login", () => {
     });
 
     it("não deve logar com e-mail não cadastrado", () => {
-
-      const email404 = data.email404
+      const email404 = data.email404;
       const message =
         "Ocorreu um erro ao fazer login, verifique suas credenciais.";
 
