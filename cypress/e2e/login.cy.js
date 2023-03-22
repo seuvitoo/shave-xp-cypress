@@ -6,8 +6,8 @@ import shaversPage from "../support/pages/shavers";
 import data from "../fixtures/users.json";
 
 describe("login", () => {
-  context.only("quando submeto o formulário", () => {
-    it.only("deve logar com sucesso", () => {
+  context("quando submeto o formulário", () => {
+    it("deve logar com sucesso", () => {
       const user = data.sucesso;
 
       cy.createUser(user)
