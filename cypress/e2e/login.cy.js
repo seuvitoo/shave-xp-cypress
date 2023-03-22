@@ -3,44 +3,35 @@
 import loginPage from "../support/pages/login";
 import shaversPage from "../support/pages/shavers";
 
-describe("login", () => {
-  context("quando submeto o formulário", () => {
-    const user = {
-      name: "Victor",
-      email: "vy.santos@live.com",
-      password: "pwd123",
-    };
+import data from "../fixtures/users.json";
 
-    it("deve logar com sucesso", () => {
+describe("login", () => {
+  context.only("quando submeto o formulário", () => {
+    it.only("deve logar com sucesso", () => {
+      const user = data.sucesso;
+
+      cy.createUser(user)
+      
+
       loginPage.submit(user.email, user.password);
       shaversPage.header.userShouldBeLogged(user.name);
     });
 
     it("não deve logar com senha incorreta", () => {
-      const user = {
-        nome: "Victor",
-        email: "vy.santos@live.com",
-        password: "pwd123456",
-      };
-
+      const senhaInvalida = data.senhaInvalida;
       const message =
         "Ocorreu um erro ao fazer login, verifique suas credenciais.";
 
-      loginPage.submit(user.email, user.password);
+      loginPage.submit(senhaInvalida.email, senhaInvalida.password);
       loginPage.noticeShouldBe(message);
     });
 
     it("não deve logar com e-mail não cadastrado", () => {
-      const user = {
-        nome: "Victor",
-        email: "vy.santos@teste.com",
-        password: "pwd123456",
-      };
-
+      const email404 = data.email404;
       const message =
         "Ocorreu um erro ao fazer login, verifique suas credenciais.";
 
-      loginPage.submit(user.email, user.password);
+      loginPage.submit(email404.email, email404.password);
       loginPage.noticeShouldBe(message);
     });
 
