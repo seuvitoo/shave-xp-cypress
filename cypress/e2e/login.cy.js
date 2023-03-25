@@ -3,15 +3,14 @@
 import loginPage from "../support/pages/login";
 import shaversPage from "../support/pages/shavers";
 
-import data from "../fixtures/users.json";
+import data from "../fixtures/users-login.json";
 
 describe("login", () => {
   context("quando submeto o formulário", () => {
     it("deve logar com sucesso", () => {
       const user = data.sucesso;
 
-      cy.createUser(user)
-      
+      cy.createUser(user);
 
       loginPage.submit(user.email, user.password);
       shaversPage.header.userShouldBeLogged(user.name);
@@ -42,7 +41,7 @@ describe("login", () => {
   });
 
   context("senha curta", () => {
-    const passwords = ["1", "12", "123", "1234", "12345"];
+    const passwords = data.shortPass;
 
     passwords.forEach((p) => {
       it(`não deve logar com a senha: ${p}`, () => {
@@ -53,14 +52,7 @@ describe("login", () => {
   });
 
   context("e-mail no formado incorreto", () => {
-    const emails = [
-      "vy.santos",
-      "1245",
-      "victor.com.br",
-      "@gmail",
-      "victor$",
-      "victor@gmail",
-    ];
+    const emails = data.invEmail;
 
     emails.forEach((p) => {
       it(`não deve logar com a senha: ${p}`, () => {
