@@ -2,7 +2,8 @@
   "sucesso": {
     "name": "Victor",
     "email": "vy.santos@live.com",
-    "password": "pwd123"
+    "password": "pwd123",
+    "is_shaver": false
   },
   "senhaInvalida": {
     "name": "Victor",
@@ -13,5 +14,20 @@
     "name": "Victor",
     "email": "vy.santos@teste.com",
     "password": "pwd123"
-  }
+  },
+  "shortPass": [
+    "1",
+    "12",
+    "123",
+    "1234",
+    "12345"
+  ],
+  "invEmail": [
+    "vy.santos",
+    "1245",
+    "victor.com.br",
+    "@gmail",
+    "victor$",
+    "victor@gmail"
+  ]
 }
