@@ -9,7 +9,7 @@ const validator = require("express-joi-validation").createValidator({
 const app = express();
 app.use(express.json());
 
-const { deleteUser, insertUser } = require("./db");
+const { deleteUser, insertUser, findToken } = require("./db");
 
 const userSchema = Joi.object({
   name: Joi.string().required(),
@@ -20,6 +20,16 @@ const userSchema = Joi.object({
 
 app.get("/welcome", function (req, res) {
   res.json({ message: "Ola QAx" });
+});
+
+app.get("/token/:email", async function (req, res) {
+  const { email } = req.params;
+  const token = await findToken(email);
+
+  if (!token) {
+    return res.status(404).end()
+  }
+  res.status(200).json(token);
 });
 
 app.delete("/user/:email", async function (req, res) {
