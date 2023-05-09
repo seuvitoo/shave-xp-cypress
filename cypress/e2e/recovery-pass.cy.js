@@ -5,14 +5,11 @@ import resetPasswordPage from "../support/pages/reset-password";
 import loginPage from "../support/pages/login";
 import shaversPage from "../support/pages/shavers";
 
+import data from "../fixtures/users-recovery-password.json";
+
 describe("esqueci minha senha", () => {
   it("deve exibir mensagem de resgate de senha", () => {
-    const user = {
-      name: "João Esquecido",
-      email: "joao@esquecido.com",
-      password: "pwd123",
-      is_shaver: false,
-    };
+    const user = data.sucesso;
 
     cy.createUser(user);
 
@@ -24,13 +21,8 @@ describe("esqueci minha senha", () => {
     forgetPasswordPage.noticeShouldBe(msg);
   });
 
-  context.only("quando o usuario solicita o resgate de senha", () => {
-    const user = {
-      name: "Will Smith",
-      email: "will@esquecido.com",
-      password: "pwd123",
-      is_shaver: false,
-    };
+  context("quando o usuario solicita o resgate de senha", () => {
+    const user = data.sucesso;
 
     beforeEach(() => {
       cy.createUser(user);
