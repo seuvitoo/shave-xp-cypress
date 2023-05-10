@@ -6,13 +6,13 @@
     "is_shaver": false
   },
   "senhaInvalida": {
-    "name": "Victor",
-    "email": "vy.santos@teste.com",
+    "name": "João",
+    "email": "joao@teste.com",
     "password": "pwd123"
   },
   "email404": {
-    "name": "Victor",
-    "email": "vy.santos@teste.com",
+    "name": "Maria",
+    "email": "maria@teste.com",
     "password": "pwd123"
   },
   "shortPass": [
